@@ -25,10 +25,10 @@ I'm a **Software Engineer - Data** at Egen Solutions with **4+ years of experien
 
 ## 🌐 Featured Content
 
-### Research & Publications
+### Recent Research & Publications
 - **AI-Driven Drug Repurposing:** Graph Neural Network Approach (IEEE)
 - **Medical Image Fusion:** Multi-modality Integration Using ML/Deep Learning
-- **Reinforcement Learning:** Decision Making (Routledge - Upcoming)
+- **Reinforcement Learning:** Decision Making (Routledge)
 
 ### Platforms
 - 🔗 [LinkedIn](https://www.linkedin.com/in/chaitanyakasaraneni/)
