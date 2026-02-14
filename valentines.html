@@ -443,20 +443,53 @@
     "The No button has left the chat.",
     "Love always wins! Just click Yes!",
     "Resistance is futile 💕",
+    "Still trying?? 🤭",
+    "You're persistent, I'll give you that.",
+    "This button has commitment issues.",
+    "It's running faster now! 🏃💨💨",
+    "Your husband is watching... 👀",
+    "The button filed a restraining order.",
+    "Attempt #{{n}}... really?",
+    "At this point just say yes 😂",
+    "The button is getting tired too.",
+    "You know there's only one right answer...",
+    "I admire your dedication 😅",
+    "Plot twist: there is no No.",
+    "The universe wants you to say Yes!",
+    "Even the button knows it's Yes.",
+    "Are we done yet? 💀",
+    "OK this is getting ridiculous 😂",
+    "The button called for backup... there is none.",
+    "You've been at this a while, huh?",
+    "Your finger must be tired 🫠",
+    "This is true love — you can't fight it!",
+    "The button is questioning its existence.",
+    "Somewhere, a rom-com is being written about this.",
+    "He loves you THIS much, just say yes!",
+    "You're making the hearts cry 😢💕",
+    "I believe in you! Click YES!",
+    "The button has entered witness protection.",
+    "It's evolving... just backwards. Into Yes.",
+    "Fun fact: no one has ever caught this button.",
+    "You're officially the most stubborn person ever 🏆",
+    "Almost there... to giving up and clicking Yes!",
+    "The button is on vacation now 🏖️",
+    "Legends say she's still chasing the No button...",
+    "Your determination is... concerning 😂",
+    "The Yes button is feeling neglected 🥺",
+    "This is attempt #{{n}}. Let that sink in.",
+    "You've spent more time on this than he spent coding it.",
+    "OK I respect the hustle 💪 but it's still Yes.",
+    "The button just applied for a passport ✈️",
+    "FINAL OFFER: Just click Yes already! 💕",
+    "...you know what, you earned it. But it's still Yes 😘",
   ];
 
   function getRandomPosition() {
-    const card = btnNo.closest('.question-card');
-    const cardRect = card.getBoundingClientRect();
-    const btnRect = btnNo.getBoundingClientRect();
-
-    // Keep button within the general card area with some overflow allowed
-    const maxX = cardRect.width - btnRect.width;
-    const maxY = 120;
-
-    const randX = Math.random() * maxX - maxX / 2;
-    const randY = Math.random() * maxY - maxY / 2;
-
+    // As attempts increase, the button escapes further across the whole viewport
+    const range = Math.min(150 + noAttempts * 6, 500);
+    const randX = (Math.random() - 0.5) * range * 2;
+    const randY = (Math.random() - 0.5) * range;
     return { x: randX, y: randY };
   }
 
@@ -471,34 +504,54 @@
   function escapeNo() {
     noAttempts++;
     const pos = getRandomPosition();
-    btnNo.style.transition = 'all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1)';
+
+    // Speed up escape as attempts increase
+    const speed = Math.max(0.08, 0.25 - noAttempts * 0.003);
+    btnNo.style.transition = `all ${speed}s cubic-bezier(0.34, 1.56, 0.64, 1)`;
     btnNo.style.transform = `translate(${pos.x}px, ${pos.y}px)`;
 
-    // Show funny message
-    const msg = funnyMessages[(noAttempts - 1) % funnyMessages.length];
+    // Show funny message (replace {{n}} with attempt number)
+    const msgIndex = (noAttempts - 1) % funnyMessages.length;
+    const msg = funnyMessages[msgIndex].replace('{{n}}', noAttempts);
     attemptMsg.textContent = msg;
     attemptMsg.style.opacity = '1';
 
-    // Grow the Yes button slightly with each attempt
-    const scale = Math.min(1 + noAttempts * 0.06, 1.5);
+    // Grow the Yes button gradually
+    const scale = Math.min(1 + noAttempts * 0.02, 1.8);
     btnYes.style.transform = `scale(${scale})`;
 
-    // After many attempts, make the No button tiny
-    if (noAttempts >= 5) {
-      const shrink = Math.max(1 - (noAttempts - 4) * 0.1, 0.4);
+    // After 15 attempts, start shrinking No button
+    if (noAttempts >= 15) {
+      const shrink = Math.max(1 - (noAttempts - 14) * 0.02, 0.3);
       btnNo.style.fontSize = `${shrink}rem`;
-      btnNo.style.padding = `${0.5 * shrink}rem ${1.5 * shrink}rem`;
+      btnNo.style.padding = `${Math.max(0.3, 0.8 * shrink)}rem ${Math.max(0.6, 1.8 * shrink)}rem`;
     }
 
-    if (noAttempts >= 8) {
-      btnNo.textContent = "ok fine...Yes 😅";
+    // At 30 attempts, button starts spinning
+    if (noAttempts >= 30) {
+      const spin = (noAttempts - 29) * 15;
+      btnNo.style.transform = `translate(${pos.x}px, ${pos.y}px) rotate(${spin}deg)`;
+    }
+
+    // At 40 attempts, button goes semi-transparent
+    if (noAttempts >= 40) {
+      const opacity = Math.max(0.3, 1 - (noAttempts - 39) * 0.07);
+      btnNo.style.opacity = opacity;
+    }
+
+    // At 50, it surrenders
+    if (noAttempts >= 50) {
+      btnNo.textContent = "ok fine... Yes 😅💕";
       btnNo.style.background = 'linear-gradient(135deg, var(--rose), var(--rose-deep))';
       btnNo.style.color = 'white';
+      btnNo.style.opacity = '1';
       btnNo.onclick = sayYes;
-      btnNo.style.transform = 'translate(0, 0)';
-      btnNo.style.fontSize = '1rem';
-      btnNo.style.padding = '0.9rem 2.2rem';
-      attemptMsg.textContent = "That's more like it! 😂💕";
+      btnNo.onmouseenter = null;
+      btnNo.ontouchstart = null;
+      btnNo.style.transform = 'translate(0, 0) rotate(0deg)';
+      btnNo.style.fontSize = '1.2rem';
+      btnNo.style.padding = '0.9rem 2.8rem';
+      attemptMsg.textContent = "50 attempts!! 🏆 That's more like it! 😂💕";
     }
   }
 
