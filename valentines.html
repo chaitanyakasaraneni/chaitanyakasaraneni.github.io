@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A Special Question For You 💌</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Cormorant+Garamond:ital,wght@0,300;0,500;1,300;1,400&family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --rose: #c9184a;
+    --rose-light: #ff4d6d;
+    --rose-deep: #a4133c;
+    --rose-dark: #590d22;
+    --blush: #fff0f3;
+    --cream: #fdf8f4;
+    --gold: #b8860b;
+    --gold-light: #daa520;
+    --text: #2d0a1a;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--cream);
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    color: var(--text);
+    overflow-x: hidden;
+    min-height: 100vh;
+  }
+
+  /* ═══════════════ FLOATING HEARTS BACKGROUND ═══════════════ */
+  .hearts-bg {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+  }
+
+  .floating-heart {
+    position: absolute;
+    bottom: -60px;
+    opacity: 0;
+    font-size: 20px;
+    animation: floatUp linear infinite;
+    color: var(--rose-light);
+  }
+
+  @keyframes floatUp {
+    0% { transform: translateY(0) rotate(0deg) scale(1); opacity: 0; }
+    10% { opacity: 0.6; }
+    90% { opacity: 0.3; }
+    100% { transform: translateY(-110vh) rotate(360deg) scale(0.5); opacity: 0; }
+  }
+
+  /* ═══════════════ QUESTION SCREEN ═══════════════ */
+  .screen {
+    position: relative;
+    z-index: 10;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+
+  .screen.hidden {
+    opacity: 0;
+    pointer-events: none;
+    position: absolute;
+    transform: scale(0.95);
+  }
+
+  .screen.visible {
+    opacity: 1;
+    pointer-events: all;
+    transform: scale(1);
+  }
+
+  /* ── Question Screen ── */
+  .question-card {
+    background: white;
+    border-radius: 24px;
+    padding: 3rem 3.5rem;
+    box-shadow:
+      0 4px 24px rgba(201, 24, 74, 0.08),
+      0 1px 3px rgba(0,0,0,0.04);
+    text-align: center;
+    max-width: 520px;
+    width: 100%;
+    position: relative;
+    overflow: visible;
+  }
+
+  .question-card::before {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    border-radius: 26px;
+    background: linear-gradient(135deg, var(--rose-light), var(--gold-light), var(--rose));
+    z-index: -1;
+    opacity: 0.5;
+  }
+
+  .envelope-icon {
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+    display: inline-block;
+    animation: wiggle 2s ease-in-out infinite;
+  }
+
+  @keyframes wiggle {
+    0%, 100% { transform: rotate(-5deg); }
+    50% { transform: rotate(5deg); }
+  }
+
+  .question-title {
+    font-family: 'Dancing Script', cursive;
+    font-size: 2.8rem;
+    font-weight: 700;
+    color: var(--rose);
+    line-height: 1.2;
+    margin-bottom: 0.5rem;
+  }
+
+  .question-sub {
+    font-size: 1.15rem;
+    color: var(--text);
+    opacity: 0.6;
+    margin-bottom: 2.5rem;
+    font-style: italic;
+  }
+
+  .btn-row {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+    align-items: center;
+    min-height: 80px;
+    position: relative;
+  }
+
+  .btn-yes, .btn-no {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+    padding: 0.9rem 2.8rem;
+    border-radius: 60px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    letter-spacing: 0.03em;
+  }
+
+  .btn-yes {
+    background: linear-gradient(135deg, var(--rose), var(--rose-deep));
+    color: white;
+    box-shadow: 0 4px 20px rgba(201, 24, 74, 0.35);
+  }
+
+  .btn-yes:hover {
+    transform: scale(1.08);
+    box-shadow: 0 6px 30px rgba(201, 24, 74, 0.5);
+  }
+
+  .btn-no {
+    background: #f0e6e8;
+    color: var(--rose-dark);
+    position: relative;
+    z-index: 5;
+    user-select: none;
+  }
+
+  .attempt-counter {
+    margin-top: 1.5rem;
+    font-size: 0.95rem;
+    color: var(--rose-light);
+    font-style: italic;
+    min-height: 1.4em;
+    transition: opacity 0.3s;
+  }
+
+  /* ═══════════════ REVEAL SCREEN ═══════════════ */
+  #reveal-screen {
+    background: linear-gradient(160deg, #590d22 0%, #800f2f 30%, #a4133c 60%, #c9184a 100%);
+    min-height: 100vh;
+    color: white;
+    position: relative;
+  }
+
+  #reveal-screen::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse at 20% 50%, rgba(255,77,109,0.15) 0%, transparent 60%),
+      radial-gradient(ellipse at 80% 20%, rgba(218,165,32,0.1) 0%, transparent 50%);
+    pointer-events: none;
+  }
+
+  .reveal-content {
+    max-width: 680px;
+    width: 100%;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+  }
+
+  .big-heart {
+    font-size: 5rem;
+    display: inline-block;
+    animation: heartbeat 1.2s ease-in-out infinite;
+    margin-bottom: 1rem;
+  }
+
+  @keyframes heartbeat {
+    0%, 100% { transform: scale(1); }
+    15% { transform: scale(1.15); }
+    30% { transform: scale(1); }
+    45% { transform: scale(1.1); }
+  }
+
+  .reveal-heading {
+    font-family: 'Dancing Script', cursive;
+    font-size: 3.5rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeUp 0.8s ease forwards 0.3s;
+    text-shadow: 0 2px 20px rgba(0,0,0,0.2);
+  }
+
+  .reveal-date {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards 0.5s;
+    color: rgba(255,255,255,0.6);
+    margin-bottom: 2.5rem;
+  }
+
+  .love-letter {
+    background: rgba(255,255,255,0.08);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 20px;
+    padding: 2.5rem 2.5rem;
+    text-align: left;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeUp 1s ease forwards 0.7s;
+    margin-bottom: 2rem;
+  }
+
+  .love-letter p {
+    font-size: 1.2rem;
+    line-height: 1.85;
+    margin-bottom: 1.2rem;
+    color: rgba(255,255,255,0.92);
+    font-weight: 300;
+  }
+
+  .love-letter p:last-child {
+    margin-bottom: 0;
+  }
+
+  .love-letter .signature {
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.6rem;
+    color: var(--gold-light);
+    margin-top: 1.5rem;
+    text-align: right;
+  }
+
+  .love-letter .highlight {
+    color: var(--gold-light);
+    font-weight: 500;
+  }
+
+  @keyframes fadeUp {
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Confetti burst */
+  .confetti-container {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 999;
+    overflow: hidden;
+  }
+
+  .confetti {
+    position: absolute;
+    top: -20px;
+    width: 10px;
+    height: 10px;
+    border-radius: 2px;
+    animation: confettiFall linear forwards;
+  }
+
+  @keyframes confettiFall {
+    0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+    100% { transform: translateY(110vh) rotate(720deg); opacity: 0; }
+  }
+
+  /* ═══════════════ SPARKLE PARTICLES ═══════════════ */
+  .sparkle-field {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .sparkle {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: var(--gold-light);
+    border-radius: 50%;
+    animation: sparkle 3s ease-in-out infinite;
+  }
+
+  @keyframes sparkle {
+    0%, 100% { opacity: 0; transform: scale(0); }
+    50% { opacity: 1; transform: scale(1); }
+  }
+
+  /* ═══════════════ RESPONSIVE ═══════════════ */
+  @media (max-width: 600px) {
+    .question-card { padding: 2rem 1.5rem; }
+    .question-title { font-size: 2.2rem; }
+    .btn-row { gap: 1rem; }
+    .btn-yes, .btn-no { padding: 0.8rem 2rem; font-size: 1.05rem; }
+    .reveal-heading { font-size: 2.5rem; }
+    .love-letter { padding: 1.8rem 1.5rem; }
+    .love-letter p { font-size: 1.05rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Floating hearts background -->
+<div class="hearts-bg" id="heartsBg"></div>
+
+<!-- ═══════════════ SCREEN 1: THE QUESTION ═══════════════ -->
+<div class="screen visible" id="question-screen">
+  <div class="question-card">
+    <div class="envelope-icon">💌</div>
+    <h1 class="question-title">Will You Be<br>My Valentine?</h1>
+    <p class="question-sub">Choose wisely... or try to 😏</p>
+    <div class="btn-row">
+      <button class="btn-yes" id="btnYes" onclick="sayYes()">Yes! 💕</button>
+      <button class="btn-no" id="btnNo">No 😢</button>
+    </div>
+    <div class="attempt-counter" id="attemptMsg"></div>
+  </div>
+</div>
+
+<!-- ═══════════════ SCREEN 2: THE REVEAL ═══════════════ -->
+<div class="screen hidden" id="reveal-screen">
+  <div class="reveal-content">
+    <div class="big-heart">❤️</div>
+    <h1 class="reveal-heading">I Knew You'd Say Yes!</h1>
+    <p class="reveal-date">Valentine's Day 2026</p>
+
+    <div class="love-letter">
+      <p>My dearest love,</p>
+
+      <p>
+        Every single day with you feels like a gift I didn't know I could receive.
+        From the moment you walked into my life, everything changed — the colors got brighter,
+        the laughter got louder, and my heart found its <span class="highlight">home</span>.
+      </p>
+
+      <p>
+        Thank you for being my best friend, my biggest supporter, and the one person
+        who makes everything worth it. You make even the ordinary moments feel extraordinary,
+        and I fall more in love with you with every passing day.
+      </p>
+
+      <p>
+        This Valentine's Day, I don't just want to celebrate love — I want to celebrate
+        <span class="highlight">you</span>. The way you laugh, the way you care, and the
+        way you make our world so beautiful just by being in it.
+      </p>
+
+      <p>
+        Here's to us, to every adventure ahead, and to a lifetime of choosing each other —
+        again and again. 🤍
+      </p>
+
+      <p class="signature">Forever & Always Yours ✨</p>
+    </div>
+  </div>
+
+  <!-- Sparkles on reveal -->
+  <div class="sparkle-field" id="sparkleField"></div>
+</div>
+
+<!-- Confetti container -->
+<div class="confetti-container" id="confettiContainer"></div>
+
+<script>
+  // ═══════════════ FLOATING HEARTS ═══════════════
+  const heartsBg = document.getElementById('heartsBg');
+  const heartEmojis = ['❤️','💕','💗','💖','🩷','♥️','💘'];
+
+  function createFloatingHeart() {
+    const heart = document.createElement('div');
+    heart.classList.add('floating-heart');
+    heart.textContent = heartEmojis[Math.floor(Math.random() * heartEmojis.length)];
+    heart.style.left = Math.random() * 100 + '%';
+    heart.style.fontSize = (14 + Math.random() * 18) + 'px';
+    heart.style.animationDuration = (6 + Math.random() * 8) + 's';
+    heart.style.animationDelay = Math.random() * 2 + 's';
+    heartsBg.appendChild(heart);
+    setTimeout(() => heart.remove(), 16000);
+  }
+
+  setInterval(createFloatingHeart, 800);
+  for (let i = 0; i < 8; i++) setTimeout(createFloatingHeart, i * 300);
+
+  // ═══════════════ NO BUTTON ESCAPE LOGIC ═══════════════
+  const btnNo = document.getElementById('btnNo');
+  const btnYes = document.getElementById('btnYes');
+  const attemptMsg = document.getElementById('attemptMsg');
+  let noAttempts = 0;
+
+  const funnyMessages = [
+    "Nice try! 😏",
+    "Nope, that's not an option!",
+    "You can't escape love! 💘",
+    "The button said: 🏃‍♂️💨",
+    "Are you sure? Look at that YES button...",
+    "I'm not giving up that easily!",
+    "Wrong answer, try again! 😂",
+    "The No button has left the chat.",
+    "Love always wins! Just click Yes!",
+    "Resistance is futile 💕",
+  ];
+
+  function getRandomPosition() {
+    const card = btnNo.closest('.question-card');
+    const cardRect = card.getBoundingClientRect();
+    const btnRect = btnNo.getBoundingClientRect();
+
+    // Keep button within the general card area with some overflow allowed
+    const maxX = cardRect.width - btnRect.width;
+    const maxY = 120;
+
+    const randX = Math.random() * maxX - maxX / 2;
+    const randY = Math.random() * maxY - maxY / 2;
+
+    return { x: randX, y: randY };
+  }
+
+  // Mouse hover (desktop)
+  btnNo.addEventListener('mouseenter', escapeNo);
+  // Touch start (mobile)
+  btnNo.addEventListener('touchstart', (e) => {
+    e.preventDefault();
+    escapeNo();
+  });
+
+  function escapeNo() {
+    noAttempts++;
+    const pos = getRandomPosition();
+    btnNo.style.transition = 'all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1)';
+    btnNo.style.transform = `translate(${pos.x}px, ${pos.y}px)`;
+
+    // Show funny message
+    const msg = funnyMessages[(noAttempts - 1) % funnyMessages.length];
+    attemptMsg.textContent = msg;
+    attemptMsg.style.opacity = '1';
+
+    // Grow the Yes button slightly with each attempt
+    const scale = Math.min(1 + noAttempts * 0.06, 1.5);
+    btnYes.style.transform = `scale(${scale})`;
+
+    // After many attempts, make the No button tiny
+    if (noAttempts >= 5) {
+      const shrink = Math.max(1 - (noAttempts - 4) * 0.1, 0.4);
+      btnNo.style.fontSize = `${shrink}rem`;
+      btnNo.style.padding = `${0.5 * shrink}rem ${1.5 * shrink}rem`;
+    }
+
+    if (noAttempts >= 8) {
+      btnNo.textContent = "ok fine...Yes 😅";
+      btnNo.style.background = 'linear-gradient(135deg, var(--rose), var(--rose-deep))';
+      btnNo.style.color = 'white';
+      btnNo.onclick = sayYes;
+      btnNo.style.transform = 'translate(0, 0)';
+      btnNo.style.fontSize = '1rem';
+      btnNo.style.padding = '0.9rem 2.2rem';
+      attemptMsg.textContent = "That's more like it! 😂💕";
+    }
+  }
+
+  // ═══════════════ YES - REVEAL ═══════════════
+  function sayYes() {
+    const qScreen = document.getElementById('question-screen');
+    const rScreen = document.getElementById('reveal-screen');
+
+    qScreen.classList.remove('visible');
+    qScreen.classList.add('hidden');
+
+    setTimeout(() => {
+      rScreen.classList.remove('hidden');
+      rScreen.classList.add('visible');
+      launchConfetti();
+      createSparkles();
+    }, 400);
+  }
+
+  // ═══════════════ CONFETTI BURST ═══════════════
+  function launchConfetti() {
+    const container = document.getElementById('confettiContainer');
+    const colors = ['#c9184a','#ff4d6d','#daa520','#fff0f3','#ffb3c6','#ff758f','#ffd700','#fff'];
+
+    for (let i = 0; i < 120; i++) {
+      const piece = document.createElement('div');
+      piece.classList.add('confetti');
+      piece.style.left = Math.random() * 100 + '%';
+      piece.style.background = colors[Math.floor(Math.random() * colors.length)];
+      piece.style.width = (6 + Math.random() * 8) + 'px';
+      piece.style.height = (6 + Math.random() * 8) + 'px';
+      piece.style.borderRadius = Math.random() > 0.5 ? '50%' : '2px';
+      piece.style.animationDuration = (2 + Math.random() * 3) + 's';
+      piece.style.animationDelay = Math.random() * 1.5 + 's';
+      container.appendChild(piece);
+    }
+
+    setTimeout(() => container.innerHTML = '', 6000);
+  }
+
+  // ═══════════════ SPARKLES ON REVEAL ═══════════════
+  function createSparkles() {
+    const field = document.getElementById('sparkleField');
+    for (let i = 0; i < 30; i++) {
+      const s = document.createElement('div');
+      s.classList.add('sparkle');
+      s.style.left = Math.random() * 100 + '%';
+      s.style.top = Math.random() * 100 + '%';
+      s.style.animationDelay = Math.random() * 3 + 's';
+      s.style.animationDuration = (2 + Math.random() * 3) + 's';
+      s.style.width = s.style.height = (2 + Math.random() * 4) + 'px';
+      field.appendChild(s);
+    }
+  }
+</script>
+
+</body>
+</html>
