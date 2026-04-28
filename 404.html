@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Page not found | Chaitanya Kasaraneni</title>
+  <meta name="robots" content="noindex">
+  <link rel="shortcut icon" href="img/c.png">
+
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem('theme');
+        if (t === 'light' || t === 'dark') document.documentElement.setAttribute('data-theme', t);
+      } catch (e) {}
+    })();
+  </script>
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="/">Chaitanya Kasaraneni<span class="dot">.</span></a>
+      <nav aria-label="Primary">
+        <ul class="nav-links">
+          <li><a href="/">Home</a></li>
+          <li><a href="/about.html">About</a></li>
+          <li><a href="/portfolio.html">Work</a></li>
+          <li><a href="/contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-header">
+      <div class="container">
+        <p class="kicker">404</p>
+        <h1>Page not found.</h1>
+        <p>The page you're looking for doesn't exist or has moved. Try the home page, or send me a note if you think this is a broken link.</p>
+        <div class="btn-row" style="margin-top: var(--space-6);">
+          <a class="btn btn-primary" href="/">Back to home</a>
+          <a class="btn btn-secondary" href="/contact.html">Report a broken link</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="theme.js"></script>
+</body>
+</html>
