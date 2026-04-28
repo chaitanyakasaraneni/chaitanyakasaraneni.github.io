@@ -1,527 +1,338 @@
-<!DOCTYPE html>
-<html lang="zxx" class="no-js">
-
+<!doctype html>
+<html lang="en">
 <head>
-	<!-- Mobile Specific Meta -->
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<!-- Favicon-->
-	<link rel="shortcut icon" href="img/c.png">
-	<!-- Author Meta -->
-	<meta name="author" content="colorlib">
-	<!-- Meta Description -->
-	<meta name="description" content="">
-	<!-- Meta Keyword -->
-	<meta name="keywords" content="">
-	<meta http-equiv="Cache-control" content="public">
-	<!-- meta character set -->
-	<meta charset="UTF-8">
-	<!-- Site Title -->
-	<title>Chaitanya K. Kasaraneni</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Work | Chaitanya Kasaraneni</title>
+  <meta name="description" content="Publications, technical writing, and open-source projects by Chaitanya Kasaraneni, covering data engineering, machine learning, GNNs, and medical AI.">
+  <link rel="canonical" href="https://ckasaraneni.com/portfolio.html">
+  <link rel="shortcut icon" href="img/ck.png">
 
-	<link href="https://fonts.googleapis.com/css?family=Poppins:100,200,400,300,500,600,700" rel="stylesheet">
-	<!--
-			CSS
-			============================================= -->
-	<link rel="stylesheet" href="css/linearicons.css">
-	<link rel="stylesheet" href="css/font-awesome.min.css">
-	<link rel="stylesheet" href="css/bootstrap.css">
-	<link rel="stylesheet" href="css/magnific-popup.css">
-	<link rel="stylesheet" href="css/jquery-ui.css">
-	<link rel="stylesheet" href="css/nice-select.css">
-	<link rel="stylesheet" href="css/animate.min.css">
-	<link rel="stylesheet" href="css/owl.carousel.css">
-	<link rel="stylesheet" href="css/main.css">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Work | Chaitanya Kasaraneni">
+  <meta property="og:description" content="Publications, writing, and code.">
+  <meta property="og:url" content="https://ckasaraneni.com/portfolio.html">
+  <meta property="og:image" content="https://ckasaraneni.com/img/kck-square.jpg">
+
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem('theme');
+        if (t === 'light' || t === 'dark') document.documentElement.setAttribute('data-theme', t);
+      } catch (e) {}
+    })();
+  </script>
+
+  <link rel="stylesheet" href="styles.css">
 </head>
-
 <body>
-	<header id="header">
-		<div class="container main-menu">
-			<div class="row align-items-center justify-content-between d-flex">
-				<div id="logo">
-					<a href="https://ckasaraneni.com/">
-						<h3>C. Kasaraneni</h3>
-					</a>
-				</div>
-				<nav id="nav-menu-container">
-					<ul class="nav-menu">
-						<li><a href="https://ckasaraneni.com/">Home</a></li>
-						<li><a href="https://ckasaraneni.com/about.html">About</a></li>
-						<li><a href="https://ckasaraneni.com/portfolio.html">Portfolio</a></li>
-						<li><a target="_blank" href="https://chaitanya-kasaraneni.medium.com">Blog</a></li>
-						<li><a href="https://ckasaraneni.com/contact.html">Contact</a></li>
-						<!--<li><a href="https://ckasaraneni.com/docs/ChaitanyaKrishna_Kasaraneni_DS.pdf" class="genric-btn primary-border circle" target="_blank">Resume</a></li>-->
-					</ul>
-				</nav><!-- #nav-menu-container -->
-			</div>
-		</div>
-	</header>
-	<!-- #header -->
+  <a class="skip-link" href="#main">Skip to content</a>
 
-	<!-- start banner Area -->
-	<section class="about-banner">
-		<div class="container">
-			<div class="row d-flex align-items-center justify-content-center">
-				<div class="about-content col-lg-12">
-					<h1 class="text-white">
-						Portfolio
-					</h1>
-					<p class="text-white link-nav"><a href="index.html">Home </a> <span
-							class="lnr lnr-arrow-right"></span> <a href="portfolio.html"> Portfolio</a></p>
-				</div>
-			</div>
-		</div>
-	</section>
-	<!-- End banner Area -->
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="/">Chaitanya Kasaraneni<span class="dot">.</span></a>
+      <nav aria-label="Primary">
+        <ul class="nav-links">
+          <li><a href="/">Home</a></li>
+          <li><a href="/about.html">About</a></li>
+          <li><a href="/portfolio.html" aria-current="page">Work</a></li>
+          <li class="optional"><a href="https://chaitanya-kasaraneni.medium.com" target="_blank" rel="noopener">Writing ↗</a></li>
+          <li><a href="/contact.html">Contact</a></li>
+        </ul>
+      </nav>
+      <button class="theme-toggle" type="button" aria-label="Toggle color theme">
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+      </button>
+    </div>
+  </header>
 
-	<!-- Start portfolio-area Area -->
-	<section class="portfolio-area section-gap" id="portfolio">
-		<div class="container">
-			<div class="row d-flex justify-content-center">
-				<div class="menu-content pb-70 col-lg-8">
-					<div class="title text-center">
-						<h1 class="mb-10">My Recent Works</h1>
-					</div>
-				</div>
-			</div>
+  <main id="main">
+    <section class="page-header">
+      <div class="container">
+        <p class="kicker">Work</p>
+        <h1>Publications, writing, and code.</h1>
+        <p>A running list of what I've published, written, and shipped: research papers, book chapters, technical tutorials, and open-source packages.</p>
+      </div>
+    </section>
 
-			<div class="filters">
-				<ul>
-					<li class="active" data-filter="*">All</li>
-					<!-- <li data-filter=".project">Projects</li> -->
-					<li data-filter=".tutorial">Tutorials</li>
-					<li data-filter=".publication">Publications</li>
-					<li data-filter=".package">Packages</li>
-				</ul>
-			</div>
+    <!-- Publications -->
+    <section>
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <p class="kicker">Research</p>
+            <h2>Publications</h2>
+          </div>
+          <a class="section-link" href="https://scholar.google.com/citations?user=Y2S8D2UAAAAJ&hl=en" target="_blank" rel="noopener">Google Scholar →</a>
+        </div>
 
-			<div class="filters-content">
-				<div class="row grid">
-					<div class="single-portfolio col-sm-4 all tutorial">
-						<div class="relative">
-							<div class="thumb">
-								<div class="overlay overlay-bg"></div>
-								<img class="image img-fluid" src="img/robo2.jpg" alt="XAI">
-							</div>
-							<a href="https://www.kdnuggets.com/2021/06/explainable-ai-xai-explainable-boosting-machines-ebm.html"
-								target="_blank">
-								<div class="middle">
-									<div class="text align-self-center d-flex"><img src="img/preview.png" alt=""></div>
-								</div>
-							</a>
-						</div>
-						<div class="p-inner">
-							<a href="https://www.kdnuggets.com/2021/06/explainable-ai-xai-explainable-boosting-machines-ebm.html"
-								target="_blank">
-								<h4>An introduction to Explainable AI and Explainable Boosting Machines</h4>
-							</a>
-						</div>
-					</div>
+        <ul class="work-list">
+          <li class="work-item">
+            <div class="work-year">2025</div>
+            <div>
+              <h3 class="work-title">
+                <a href="https://ieeexplore.ieee.org/abstract/document/11189545" target="_blank" rel="noopener">
+                  AI-driven drug repurposing: a graph neural network and self-supervised learning approach
+                </a>
+              </h3>
+              <p class="work-desc">Computational drug discovery using GNNs and self-supervised pretraining over biomedical knowledge graphs.</p>
+              <div class="work-tags">
+                <span class="work-tag">IEEE</span>
+                <span class="work-tag">GNN</span>
+                <span class="work-tag">Drug Discovery</span>
+              </div>
+            </div>
+            <div class="work-arrow" aria-hidden="true">→</div>
+          </li>
 
-					<div class="single-portfolio col-sm-4 all tutorial">
-						<div class="relative">
-							<div class="thumb">
-								<div class="overlay overlay-bg"></div>
-								<img class="image img-fluid" src="img/neighbors2.jpg" alt="Neighbors">
-							</div>
-							<a href="https://towardsdatascience.com/build-knn-from-scratch-python-7b714c47631a"
-								target="_blank">
-								<div class="middle">
-									<div class="text align-self-center d-flex"><img src="img/preview.png" alt=""></div>
-								</div>
-							</a>
-						</div>
-						<div class="p-inner">
-							<a href="https://towardsdatascience.com/build-knn-from-scratch-python-7b714c47631a"
-								target="_blank">
-								<h4>Build kNN from scratch - Python</h4>
-							</a>
-						</div>
-					</div>
+          <li class="work-item">
+            <div class="work-year">2025</div>
+            <div>
+              <h3 class="work-title">
+                <a href="https://link.springer.com/chapter/10.1007/978-3-031-98728-1_16" target="_blank" rel="noopener">
+                  Multi-modality medical image fusion using ML and deep learning
+                </a>
+              </h3>
+              <p class="work-desc">Methods for integrating CT, MRI, and ultrasound modalities for clinical decision support. Book chapter.</p>
+              <div class="work-tags">
+                <span class="work-tag">Springer</span>
+                <span class="work-tag">Book Chapter</span>
+                <span class="work-tag">Medical AI</span>
+              </div>
+            </div>
+            <div class="work-arrow" aria-hidden="true">→</div>
+          </li>
 
-					<div class="single-portfolio col-sm-4 all tutorial">
-						<div class="relative">
-							<div class="thumb">
-								<div class="overlay overlay-bg"></div>
-								<img class="image img-fluid" src="img/nlp2.jpeg" alt="NLP Wordcloud">
-							</div>
-							<a href="https://medium.com/analytics-vidhya/understanding-nlp-pipeline-9af8cba78a56"
-								target="_blank">
-								<div class="middle">
-									<div class="text align-self-center d-flex"><img src="img/preview.png" alt=""></div>
-								</div>
-							</a>
-						</div>
-						<div class="p-inner">
-							<a href="https://medium.com/analytics-vidhya/understanding-nlp-pipeline-9af8cba78a56"
-								target="_blank">
-								<h4>NLP Pipeline Introduction</h4>
-							</a>
-						</div>
-					</div>
+          <li class="work-item">
+            <div class="work-year">2024</div>
+            <div>
+              <h3 class="work-title">
+                <a href="https://www.taylorfrancis.com/chapters/edit/10.1201/9781003568995-2/reinforcement-learning-decision-making-nazeerunnisa-qureshey-nandini-prasad-nisha-yarlagadda-anuradha-chaitanya-krishna-kasaraneni-nagabhushana-rao" target="_blank" rel="noopener">
+                  Reinforcement learning for decision making
+                </a>
+              </h3>
+              <p class="work-desc">Applications of RL across modern Industry 5.0 systems. Book chapter for Routledge.</p>
+              <div class="work-tags">
+                <span class="work-tag">Routledge</span>
+                <span class="work-tag">Book Chapter</span>
+                <span class="work-tag">RL</span>
+              </div>
+            </div>
+            <div class="work-arrow" aria-hidden="true">→</div>
+          </li>
 
-					<div class="single-portfolio col-sm-4 all tutorial">
-						<div class="relative">
-							<div class="thumb">
-								<div class="overlay overlay-bg"></div>
-								<img class="image img-fluid" src="img/etl.png" alt="ETL">
-							</div>
-							<a href="https://medium.com/analytics-vidhya/understanding-etl-pipeline-76718d299a08"
-								target="_blank">
-								<div class="middle">
-									<div class="text align-self-center d-flex"><img src="img/preview.png" alt=""></div>
-								</div>
-							</a>
-						</div>
-						<div class="p-inner">
-							<a href="https://medium.com/analytics-vidhya/understanding-etl-pipeline-76718d299a08"
-								target="_blank">
-								<h4>Intro to ETL Pipeline</h4>
-							</a>
-						</div>
-					</div>
+          <li class="work-item">
+            <div class="work-year">2023</div>
+            <div>
+              <h3 class="work-title">
+                <a href="https://doi.org/10.14419/ijet.v12i2.32328" target="_blank" rel="noopener">
+                  Do trust-based social recommendation algorithms work as intended?
+                </a>
+              </h3>
+              <p class="work-desc">Empirical study examining whether trust signals deliver on their promise in recommender systems.</p>
+              <div class="work-tags">
+                <span class="work-tag">IJET</span>
+                <span class="work-tag">Recsys</span>
+                <span class="work-tag">Social Networks</span>
+              </div>
+            </div>
+            <div class="work-arrow" aria-hidden="true">→</div>
+          </li>
 
-					<div class="single-portfolio col-sm-4 all package">
-						<div class="relative">
-							<div class="thumb">
-								<div class="overlay overlay-bg"></div>
-								<img class="image img-fluid" src="img/pypi.jpg" alt="PyPI Logo">
-							</div>
-							<a href="http://pypi.org/user/chaitanya_k/" target="_blank">
-								<div class="middle">
-									<div class="text align-self-center d-flex"><img src="img/preview.png" alt=""></div>
-								</div>
-							</a>
-						</div>
-						<div class="p-inner">
-							<a href="http://pypi.org/user/chaitanya_k/" target="_blank">
-								<h4>Python Packages</h4>
-							</a>
-						</div>
-					</div>
+          <li class="work-item">
+            <div class="work-year">2020</div>
+            <div>
+              <h3 class="work-title">
+                <a href="https://scholarworks.sjsu.edu/etd_theses/5151/" target="_blank" rel="noopener">
+                  Influence of social circles on user recommendations
+                </a>
+              </h3>
+              <p class="work-desc">Master's thesis on social-graph-aware recommendation models. San Jose State University.</p>
+              <div class="work-tags">
+                <span class="work-tag">MS Thesis</span>
+                <span class="work-tag">SJSU</span>
+                <span class="work-tag">Recsys</span>
+              </div>
+            </div>
+            <div class="work-arrow" aria-hidden="true">→</div>
+          </li>
 
-					<!-- <div class="single-portfolio col-sm-4 all project">
-                            	<div class="relative">
-	                            	<div class="thumb">
-	                            		<div class="overlay overlay-bg"></div>
-	                            		 <img class="image img-fluid" src="img/covid2.jpg" alt="Coronavirus">
-	                            	</div>
-									<a href="https://medium.com/analytics-vidhya/covid-19-data-analysis-e9cb652e8c10" target="_blank">	
-									  <div class="middle">
-									    <div class="text align-self-center d-flex"><img src="img/preview.png" alt=""></div>
-									  </div>
-								</a>                              		
-                            	</div>
-								<div class="p-inner">
-								    <a href="https://medium.com/analytics-vidhya/covid-19-data-analysis-e9cb652e8c10" target="_blank">	
-								    <h4>COVID-19 Data Analysis</h4>
-									</a>
-								</div>					                               
-                            </div>                    
-                            
-                            
-                            
-                            <div class="single-portfolio col-sm-4 all project">
-                            	<div class="relative">
-	                            	<div class="thumb">
-	                            		<div class="overlay overlay-bg"></div>
-	                            		 <img class="image img-fluid" src="img/disaster.jpg" alt="Emergency Image">
-	                            	</div>
-									<a href="https://github.com/chaitanyakasaraneni/DisasterResponse" target="_blank">	
-									  <div class="middle">
-									    <div class="text align-self-center d-flex"><img src="img/preview.png" alt=""></div>
-									  </div>
-								</a>                              		
-                            	</div>
-								<div class="p-inner">
-								    <a href="https://github.com/chaitanyakasaraneni/DisasterResponse" target="_blank">	
-								    <h4>Text categorization for Disaster Response </h4>
-									</a>
-								</div>					                               
-                            </div>
-                            
-                            <div class="single-portfolio col-sm-4 all project">
-                            	<div class="relative">
-	                            	<div class="thumb">
-	                            		<div class="overlay overlay-bg"></div>
-	                            		 <img class="image img-fluid" src="img/food.jpg" alt="Yelp Food">
-	                            	</div>
-									<a href="https://github.com/chaitanyakasaraneni/yelpphotoclassification" target="_blank">	
-									  <div class="middle">
-									    <div class="text align-self-center d-flex"><img src="img/preview.png" alt=""></div>
-									  </div>
-								</a>                              		
-                            	</div>
-								<div class="p-inner">
-								    <a href="https://github.com/chaitanyakasaraneni/yelpphotoclassification" target="_blank">	
-								    <h4>Photo Classification and Image Tag Generation on Yelp Data</h4>
-									</a>
-								</div>					                               
-                            </div> -->
+          <li class="work-item">
+            <div class="work-year">2019</div>
+            <div>
+              <h3 class="work-title">
+                <a href="https://ieeexplore.ieee.org/document/8937988" target="_blank" rel="noopener">
+                  Machine translation of English videos to Indian regional languages
+                </a>
+              </h3>
+              <p class="work-desc">End-to-end pipeline for translating spoken English video into regional Indian languages.</p>
+              <div class="work-tags">
+                <span class="work-tag">IEEE</span>
+                <span class="work-tag">NLP</span>
+                <span class="work-tag">MT</span>
+              </div>
+            </div>
+            <div class="work-arrow" aria-hidden="true">→</div>
+          </li>
+        </ul>
+      </div>
+    </section>
 
-					<div class="single-portfolio col-sm-4 all publication">
-						<div class="relative">
-							<div class="thumb">
-								<div class="overlay overlay-bg"></div>
-								<img class="image img-fluid" src="img/samplesocialrec.png" alt="Social Network">
-							</div>
-							<a href="https://scholarworks.sjsu.edu/etd_theses/5151/" target="_blank">
-								<div class="middle">
-									<div class="text align-self-center d-flex"><img src="img/preview.png" alt=""></div>
-								</div>
-							</a>
-						</div>
-						<div class="p-inner">
-							<a href="https://scholarworks.sjsu.edu/etd_theses/5151/" target="_blank">
-								<h4>Influence of Social Circles on User Recommendations</h4>
-							</a>
-						</div>
-					</div>
+    <!-- Writing -->
+    <section>
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <p class="kicker">Writing</p>
+            <h2>Tutorials &amp; articles</h2>
+          </div>
+          <a class="section-link" href="https://chaitanya-kasaraneni.medium.com" target="_blank" rel="noopener">All on Medium →</a>
+        </div>
 
-					<div class="single-portfolio col-sm-4 all publication">
-						<div class="relative">
-							<div class="thumb">
-								<div class="overlay overlay-bg"></div>
-								<img class="image img-fluid" src="img/mt.jpg" alt="Machine Translation">
-							</div>
-							<a href="https://ieeexplore.ieee.org/document/8937988" target="_blank">
-								<div class="middle">
-									<div class="text align-self-center d-flex"><img src="img/preview.png" alt=""></div>
-								</div>
-							</a>
-						</div>
-						<div class="p-inner">
-							<a href="https://ieeexplore.ieee.org/document/8937988" target="_blank">
-								<h4>Machine Translation of English Videos to Indian Regional Languages</h4>
-							</a>
-						</div>
-					</div>
+        <ul class="work-list">
+          <li class="work-item">
+            <div class="work-year">KDnuggets</div>
+            <div>
+              <h3 class="work-title">
+                <a href="https://www.kdnuggets.com/2021/06/explainable-ai-xai-explainable-boosting-machines-ebm.html" target="_blank" rel="noopener">
+                  An introduction to explainable AI and explainable boosting machines
+                </a>
+              </h3>
+              <p class="work-desc">A primer on XAI fundamentals and how EBMs combine accuracy with interpretability.</p>
+              <div class="work-tags"><span class="work-tag">XAI</span><span class="work-tag">EBM</span></div>
+            </div>
+            <div class="work-arrow" aria-hidden="true">→</div>
+          </li>
+          <li class="work-item">
+            <div class="work-year">TDS</div>
+            <div>
+              <h3 class="work-title">
+                <a href="https://towardsdatascience.com/build-knn-from-scratch-python-7b714c47631a" target="_blank" rel="noopener">
+                  Build kNN from scratch in Python
+                </a>
+              </h3>
+              <p class="work-desc">A from-the-ground-up implementation of k-nearest neighbors with the math made explicit.</p>
+              <div class="work-tags"><span class="work-tag">ML</span><span class="work-tag">Python</span></div>
+            </div>
+            <div class="work-arrow" aria-hidden="true">→</div>
+          </li>
+          <li class="work-item">
+            <div class="work-year">Medium</div>
+            <div>
+              <h3 class="work-title">
+                <a href="https://medium.com/analytics-vidhya/understanding-nlp-pipeline-9af8cba78a56" target="_blank" rel="noopener">
+                  Understanding the NLP pipeline
+                </a>
+              </h3>
+              <p class="work-desc">A walk-through of the typical stages in a modern natural-language-processing system.</p>
+              <div class="work-tags"><span class="work-tag">NLP</span></div>
+            </div>
+            <div class="work-arrow" aria-hidden="true">→</div>
+          </li>
+          <li class="work-item">
+            <div class="work-year">Medium</div>
+            <div>
+              <h3 class="work-title">
+                <a href="https://medium.com/analytics-vidhya/understanding-etl-pipeline-76718d299a08" target="_blank" rel="noopener">
+                  Intro to ETL pipelines
+                </a>
+              </h3>
+              <p class="work-desc">A walk-through of extract-transform-load patterns and why they matter for data platforms.</p>
+              <div class="work-tags"><span class="work-tag">ETL</span><span class="work-tag">Data Eng</span></div>
+            </div>
+            <div class="work-arrow" aria-hidden="true">→</div>
+          </li>
+        </ul>
+      </div>
+    </section>
 
-					<div class="single-portfolio col-sm-4 all publication">
-						<div class="relative">
-							<div class="thumb">
-								<div class="overlay overlay-bg"></div>
-								<img class="image img-fluid" src="img/network.webp" alt="Trust-based Recommendations">
-							</div>
-							<a href="https://doi.org/10.14419/ijet.v12i2.32328" target="_blank">
-								<div class="middle">
-									<div class="text align-self-center d-flex"><img src="img/preview.png" alt=""></div>
-								</div>
-							</a>
-						</div>
-						<div class="p-inner">
-							<a href="https://doi.org/10.14419/ijet.v12i2.32328" target="_blank">
-								<h4>Do Trust based Social Recommendation Algorithms Work as Intended?</h4>
-							</a>
-						</div>
-					</div>
+    <!-- Code -->
+    <section>
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <p class="kicker">Code</p>
+            <h2>Open source</h2>
+          </div>
+          <a class="section-link" href="https://github.com/chaitanyakasaraneni" target="_blank" rel="noopener">GitHub →</a>
+        </div>
 
-					<div class="single-portfolio col-sm-4 all publication">
-						<div class="relative">
-							<div class="thumb">
-								<div class="overlay overlay-bg"></div>
-								<img class="image img-fluid" src="img/drug.jpg" alt="Drug Repurposing">
-							</div>
-							<a href="https://ieeexplore.ieee.org/abstract/document/11189545" target="_blank">
-								<div class="middle">
-									<div class="text align-self-center d-flex"><img src="img/preview.png" alt=""></div>
-								</div>
-							</a>
-						</div>
-						<div class="p-inner">
-							<a href="https://ieeexplore.ieee.org/abstract/document/11189545" target="_blank">
-								<h4>AI-Driven Drug Repurposing: A Graph Neural Network and Self-Supervised Learning
-									Approach</h4>
-							</a>
-						</div>
-					</div>
+        <ul class="work-list">
+          <li class="work-item">
+            <div class="work-year">Python</div>
+            <div>
+              <h3 class="work-title">
+                <a href="https://pypi.org/project/clinops/" target="_blank" rel="noopener">
+                  <code>clinops</code>
+                </a>
+              </h3>
+              <p class="work-desc">Clinical ML pipeline toolkit: MIMIC-IV / FHIR loaders, temporal feature windows, and patient-aware train/test splits that don't leak across cohorts. Distilled from production work in clinical and genomic data engineering.</p>
+              <pre class="install-cmd"><span class="prompt">$</span> pip install clinops</pre>
+              <div class="work-tags">
+                <span class="work-tag">PyPI</span>
+                <span class="work-tag">Healthcare</span>
+                <span class="work-tag">Apache 2.0</span>
+                <a class="work-tag" href="https://github.com/chaitanyakasaraneni/clinops" target="_blank" rel="noopener">GitHub ↗</a>
+                <a class="work-tag" href="https://clinops.readthedocs.io" target="_blank" rel="noopener">Docs ↗</a>
+              </div>
+            </div>
+            <div class="work-arrow" aria-hidden="true">→</div>
+          </li>
 
-					<div class="single-portfolio col-sm-4 all publication">
-						<div class="relative">
-							<div class="thumb">
-								<div class="overlay overlay-bg"></div>
-								<img class="image img-fluid" src="img/book.png" alt="Data Science">
-							</div>
-							<a href="https://a.co/d/1Cvad54" target="_blank">
-								<div class="middle">
-									<div class="text align-self-center d-flex"><img src="img/preview.png" alt=""></div>
-								</div>
-							</a>
-						</div>
-						<div class="p-inner">
-							<a href="https://a.co/d/1Cvad54" target="_blank">
-								<h4>Data Science Unveiled: Navigating the Future with Analytical Precision</h4>
-							</a>
-						</div>
-					</div>
+          <li class="work-item">
+            <div class="work-year">Python</div>
+            <div>
+              <h3 class="work-title">
+                <a href="https://pypi.org/project/samplesheet-parser/" target="_blank" rel="noopener">
+                  <code>samplesheet-parser</code>
+                </a>
+              </h3>
+              <p class="work-desc">Format-agnostic parser for Illumina <code>SampleSheet.csv</code> files. Auto-detects IEM v1 vs. BCLConvert v2, validates index integrity with Hamming distance checks, and converts, diffs, or merges sheets across mixed sequencing fleets.</p>
+              <pre class="install-cmd"><span class="prompt">$</span> pip install samplesheet-parser</pre>
+              <div class="work-tags">
+                <span class="work-tag">PyPI</span>
+                <span class="work-tag">Bioconda</span>
+                <span class="work-tag">Bioinformatics</span>
+                <span class="work-tag">Apache 2.0</span>
+                <a class="work-tag" href="https://github.com/chaitanyakasaraneni/samplesheet-parser" target="_blank" rel="noopener">GitHub ↗</a>
+                <a class="work-tag" href="https://illumina-samplesheet.readthedocs.io" target="_blank" rel="noopener">Docs ↗</a>
+                <a class="work-tag" href="https://bioconda.github.io/recipes/samplesheet-parser/README.html" target="_blank" rel="noopener">Bioconda ↗</a>
+              </div>
+            </div>
+            <div class="work-arrow" aria-hidden="true">→</div>
+          </li>
+        </ul>
+      </div>
+    </section>
 
-					<div class="single-portfolio col-sm-4 all publication">
-						<div class="relative">
-							<div class="thumb">
-								<div class="overlay overlay-bg"></div>
-								<img class="image img-fluid" src="img/SNBook.png" alt="Medical Imaging">
-							</div>
-							<a href="https://link.springer.com/chapter/10.1007/978-3-031-98728-1_16" target="_blank">
-								<div class="middle">
-									<div class="text align-self-center d-flex"><img src="img/preview.png" alt=""></div>
-								</div>
-							</a>
-						</div>
-						<div class="p-inner">
-							<a href="https://link.springer.com/chapter/10.1007/978-3-031-98728-1_16" target="_blank">
-								<h4>Multi-modality Medical Image Fusion Using ML/Deep Learning</h4>
-								<p style="font-size: 12px; margin-top: 5px; color: #999;"><i>Book Chapter - Springer</i></p>
-							</a>
-						</div>
-					</div>
+    <section>
+      <div class="container">
+        <div class="cta-card">
+          <h2>Want to chat about data or research?</h2>
+          <p>Always happy to swap notes on data systems, ML in production, or open-source projects, and to hear feedback on my writing or research.</p>
+          <div class="btn-row">
+            <a class="btn btn-primary" href="/contact.html">Say hello</a>
+            <a class="btn btn-secondary" href="/about.html">More about me</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
 
-					<div class="single-portfolio col-sm-4 all publication">
-						<div class="relative">
-							<div class="thumb">
-								<div class="overlay overlay-bg"></div>
-								<img class="image img-fluid" src="img/reinforcementLearning.jpg" alt="Reinforcement Learning">
-							</div>
-							<a href="https://www.taylorfrancis.com/chapters/edit/10.1201/9781003568995-2/reinforcement-learning-decision-making-nazeerunnisa-qureshey-nandini-prasad-nisha-yarlagadda-anuradha-chaitanya-krishna-kasaraneni-nagabhushana-rao"
-								target="_blank">
-								<div class="middle">
-									<div class="text align-self-center d-flex"><img src="img/preview.png" alt=""></div>
-								</div>
-							</a>
-						</div>
-						<div class="p-inner">
-              				<a href="https://www.taylorfrancis.com/chapters/edit/10.1201/9781003568995-2/reinforcement-learning-decision-making-nazeerunnisa-qureshey-nandini-prasad-nisha-yarlagadda-anuradha-chaitanya-krishna-kasaraneni-nagabhushana-rao"
-								target="_blank">
-								<h4>Reinforcement Learning for Decision Making</h4>
-								<p style="font-size: 12px; margin-top: 5px; color: #999;"><i>Book Chapter - Routledge</i></p>
-							</a>
-						</div>
-					</div>
+  <footer class="site-footer">
+    <div class="container footer-row">
+      <span>&copy; <span id="year"></span> Chaitanya Kasaraneni</span>
+      <ul class="social-links">
+        <li><a href="https://github.com/chaitanyakasaraneni" target="_blank" rel="noopener">GitHub</a></li>
+        <li><a href="https://www.linkedin.com/in/chaitanyakasaraneni/" target="_blank" rel="noopener">LinkedIn</a></li>
+        <li><a href="https://chaitanya-kasaraneni.medium.com" target="_blank" rel="noopener">Medium</a></li>
+        <li><a href="https://scholar.google.com/citations?user=Y2S8D2UAAAAJ&hl=en" target="_blank" rel="noopener">Scholar</a></li>
+      </ul>
+    </div>
+  </footer>
 
-				</div>
-			</div>
-
-		</div>
-	</section>
-	<!-- End portfolio-area Area -->
-
-	<!-- Start other platforms Area -->
-	<section class="price-area section-gap">
-		<div class="container">
-			<div class="row d-flex justify-content-center">
-
-				<div class="menu-content pb-20 col-lg-8">
-					<div class="title text-center">
-						<h1 class="mb-10">Other Platforms</h1>
-
-					</div>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-lg-3 col-md-3 single-price">
-					<a href="https://github.com/chaitanyakasaraneni">
-						<div class="top-part">
-							<img src="img/github.png" height=200 width=200>
-							<h4>GitHub</h4>
-							<p class="mt-10">My code base</p>
-						</div>
-					</a>
-
-
-				</div>
-				<div class="col-lg-3 col-md-3 single-price">
-					<a href="https://chaitanya-kasaraneni.medium.com">
-						<div class="top-part">
-							<img src="img/medium.png" height=200 width=200>
-							<h4>Medium</h4>
-							<p class="mt-10">Place to read the stuff I write</p>
-						</div>
-					</a>
-
-
-				</div>
-
-				<div class="col-lg-3 col-md-3 single-price">
-					<a href="https://www.linkedin.com/in/chaitanyakasaraneni/">
-						<div class="top-part">
-							<img src="img/linkedin.png" height=200 width=200>
-							<h4>LinkedIn</h4>
-							<p class="mt-10">Let us connect</p>
-						</div>
-					</a>
-
-
-				</div>
-
-				<div class="col-lg-3 col-md-3 single-price">
-					<a href="https://scholar.google.com/citations?user=Y2S8D2UAAAAJ&hl=en">
-						<div class="top-part">
-							<img src="img/googlescholar.png" height=200 width=200>
-							<h4>Google Scholar</h4>
-							<p class="mt-10">My Research Works</p>
-						</div>
-					</a>
-
-
-				</div>
-
-
-			</div>
-		</div>
-	</section>
-	<!-- End  other platforms Area -->
-
-	<!-- start footer Area -->
-	<footer class="footer-area section-gap">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-5 col-md-6 col-sm-6">
-					<div class="single-footer-widget">
-						<p class="footer-text">
-							<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-							Copyright &copy;
-							<script>document.write(new Date().getFullYear());</script> All rights reserved | This
-							template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a
-								href="https://colorlib.com" target="_blank">Colorlib</a>
-							<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-						</p>
-					</div>
-				</div>
-				<div class="col-lg-5 col-md-6 col-sm-6"></div>
-				<div class="col-lg-2 col-md-6 col-sm-6 social-widget">
-					<div class="single-footer-widget">
-						<h4>Follow Me</h4>
-						<p>Let us be social</p>
-						<div class="footer-social d-flex align-items-center">
-							<a href="https://chaitanya-kasaraneni.medium.com"><i class="fa fa-medium"></i></a>
-							<a href="https://www.linkedin.com/in/chaitanyakasaraneni/"><i
-									class="fa fa-linkedin"></i></a>
-							<a href="https://github.com/chaitanyakasaraneni"><i class="fa fa-github"></i></a>
-							<a href="https://dev.to/chaitanyakasaraneni"><i class="fab fa-dev"></i></a>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</footer>
-	<!-- End footer Area -->
-
-	<script src="js/vendor/jquery-2.2.4.min.js"></script>
-	<script src="js/popper.min.js"></script>
-	<script src="js/vendor/bootstrap.min.js"></script>
-	<script src="https://kit.fontawesome.com/004d7f6add.js" crossorigin="anonymous"></script>
-	<script src="js/easing.min.js"></script>
-	<script src="js/hoverIntent.js"></script>
-	<script src="js/superfish.min.js"></script>
-	<script src="js/jquery.ajaxchimp.min.js"></script>
-	<script src="js/jquery.magnific-popup.min.js"></script>
-	<script src="js/jquery.tabs.min.js"></script>
-	<script src="js/jquery.nice-select.min.js"></script>
-	<script src="js/isotope.pkgd.min.js"></script>
-	<script src="js/waypoints.min.js"></script>
-	<script src="js/jquery.counterup.min.js"></script>
-	<script src="js/simple-skillbar.js"></script>
-	<script src="js/owl.carousel.min.js"></script>
-	<script src="js/mail-script.js"></script>
-	<script src="js/main.js"></script>
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+  <script src="theme.js"></script>
 </body>
-
 </html>
