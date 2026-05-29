@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Blog | Chaitanya Kasaraneni</title>
+  <meta name="description" content="Technical write-ups on data engineering, cloud infrastructure, open source, and bioinformatics by Chaitanya Kasaraneni. Based in Chicago.">
+  <link rel="canonical" href="https://ckasaraneni.com/blog/">
+  <link rel="shortcut icon" href="/img/ck.png">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Blog | Chaitanya Kasaraneni">
+  <meta property="og:description" content="Technical write-ups on data engineering, cloud infrastructure, open source, and bioinformatics.">
+  <meta property="og:url" content="https://ckasaraneni.com/blog/">
+  <meta property="og:image" content="https://ckasaraneni.com/img/kck-square.jpg">
+
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem('theme');
+        if (t === 'light' || t === 'dark') document.documentElement.setAttribute('data-theme', t);
+      } catch (e) {}
+    })();
+  </script>
+
+  <link rel="stylesheet" href="/styles/styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="/">Chaitanya Kasaraneni<span class="dot">.</span></a>
+      <nav aria-label="Primary">
+        <ul class="nav-links">
+          <li><a href="/">Home</a></li>
+          <li><a href="/about.html">About</a></li>
+          <li><a href="/portfolio.html">Work</a></li>
+          <li><a href="/blog/" aria-current="page">Blog</a></li>
+          <li class="optional"><a href="https://chaitanya-kasaraneni.medium.com" target="_blank" rel="noopener">Writing ↗</a></li>
+          <li><a href="/contact.html">Contact</a></li>
+        </ul>
+      </nav>
+      <button class="theme-toggle" type="button" aria-label="Toggle color theme">
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="page-header">
+      <div class="container">
+        <p class="kicker">Blog · Notes and write-ups</p>
+        <h1>Notes from what I'm building.</h1>
+        <p>Technical write-ups on data engineering, cloud infrastructure, open source, and bioinformatics. New posts publish here first as the canonical URL, then get cross-posted to Medium where useful.</p>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <ul class="work-list">
+          <!-- Posts will be added here as <li class="work-item"> entries -->
+        </ul>
+
+        <div class="cta-card" style="margin-top: 2rem;">
+          <h2>First post in draft</h2>
+          <p>Working on the <strong>cloudfit launch write-up</strong>. Why I built it, what's there today, and what's not. Subscribe via RSS or check back soon.</p>
+          <div class="btn-row">
+            <a class="btn btn-secondary" href="https://chaitanya-kasaraneni.medium.com" target="_blank" rel="noopener">Older articles on Medium ↗</a>
+            <a class="btn btn-secondary" href="/portfolio.html">See all writing on Work →</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-row">
+      <span>&copy; <span id="year"></span> Chaitanya Kasaraneni</span>
+      <ul class="social-links">
+        <li><a href="https://github.com/chaitanyakasaraneni" target="_blank" rel="noopener">GitHub</a></li>
+        <li><a href="https://www.linkedin.com/in/chaitanyakasaraneni/" target="_blank" rel="noopener">LinkedIn</a></li>
+        <li><a href="https://chaitanya-kasaraneni.medium.com" target="_blank" rel="noopener">Medium</a></li>
+        <li><a href="https://scholar.google.com/citations?user=Y2S8D2UAAAAJ&hl=en" target="_blank" rel="noopener">Scholar</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+  <script src="/styles/theme.js"></script>
+</body>
+</html>
