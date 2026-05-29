@@ -459,6 +459,19 @@ a.work-tag:hover {
   color: var(--accent);
 }
 
+/* Primary action tag (live demo, docs, etc) — filled accent for visibility */
+a.work-tag.work-tag-cta {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--accent-fg);
+  font-weight: 600;
+}
+a.work-tag.work-tag-cta:hover {
+  background: var(--accent-hover);
+  border-color: var(--accent-hover);
+  color: var(--accent-fg);
+}
+
 .install-cmd {
   font-family: var(--font-mono);
   font-size: 0.8125rem;
