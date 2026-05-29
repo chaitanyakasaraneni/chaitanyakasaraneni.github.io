@@ -23,7 +23,7 @@
     })();
   </script>
 
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles/styles.css">
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -179,6 +179,88 @@
       </div>
     </section>
 
+    <!-- Code -->
+    <section>
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <p class="kicker">Code</p>
+            <h2>Open source</h2>
+          </div>
+          <a class="section-link" href="https://github.com/chaitanyakasaraneni" target="_blank" rel="noopener">GitHub →</a>
+        </div>
+
+        <ul class="work-list">
+          <li class="work-item">
+            <div class="work-year">Python</div>
+            <div>
+              <h3 class="work-title">
+                <a href="https://github.com/cloudfit-io" target="_blank" rel="noopener">
+                  <code>cloudfit</code>
+                </a>
+              </h3>
+              <p class="work-desc">Cloud-agnostic machine type advisor for batch and bioinformatics workloads. Given a workload spec (CPU, RAM, region, optimize for cost / performance / availability), returns ranked instance recommendations with transparent per-factor scoring. Multi-package OSS ecosystem: scoring engine (<code>cloudfit-core</code>), GCP provider (<code>cloudfit-provider-gcp</code>), and a stateless FastAPI service (<code>cloudfit-api</code>) with a multi-region bundled snapshot. Built to fill the pre-launch and batch-workload sizing gap that incumbent free tools (Compute Optimizer, GCP Recommender) don't cover.</p>
+              <pre class="install-cmd"><span class="prompt">$</span> pip install cloudfit-core cloudfit-provider-gcp cloudfit-api</pre>
+              <div class="work-tags">
+                <span class="work-tag">PyPI</span>
+                <span class="work-tag">FastAPI</span>
+                <span class="work-tag">Multi-cloud</span>
+                <span class="work-tag">Apache 2.0</span>
+                <a class="work-tag" href="https://github.com/cloudfit-io" target="_blank" rel="noopener">GitHub ↗</a>
+                <a class="work-tag" href="https://cloudfit-io.github.io" target="_blank" rel="noopener">Landing ↗</a>
+                <a class="work-tag" href="https://chaitanyakasaraneni-cloudfit-api.hf.space/docs" target="_blank" rel="noopener">Live demo ↗</a>
+              </div>
+            </div>
+            <div class="work-arrow" aria-hidden="true">→</div>
+          </li>
+
+          <li class="work-item">
+            <div class="work-year">Python</div>
+            <div>
+              <h3 class="work-title">
+                <a href="https://pypi.org/project/clinops/" target="_blank" rel="noopener">
+                  <code>clinops</code>
+                </a>
+              </h3>
+              <p class="work-desc">Clinical ML pipeline toolkit: MIMIC-IV / FHIR loaders, temporal feature windows, and patient-aware train/test splits that don't leak across cohorts. Distilled from production work in clinical and genomic data engineering.</p>
+              <pre class="install-cmd"><span class="prompt">$</span> pip install clinops</pre>
+              <div class="work-tags">
+                <span class="work-tag">PyPI</span>
+                <span class="work-tag">Healthcare</span>
+                <span class="work-tag">Apache 2.0</span>
+                <a class="work-tag" href="https://github.com/chaitanyakasaraneni/clinops" target="_blank" rel="noopener">GitHub ↗</a>
+                <a class="work-tag" href="https://clinops.readthedocs.io" target="_blank" rel="noopener">Docs ↗</a>
+              </div>
+            </div>
+            <div class="work-arrow" aria-hidden="true">→</div>
+          </li>
+
+          <li class="work-item">
+            <div class="work-year">Python</div>
+            <div>
+              <h3 class="work-title">
+                <a href="https://pypi.org/project/samplesheet-parser/" target="_blank" rel="noopener">
+                  <code>samplesheet-parser</code>
+                </a>
+              </h3>
+              <p class="work-desc">Format-agnostic parser for Illumina <code>SampleSheet.csv</code> files. Auto-detects IEM v1 vs. BCLConvert v2, validates index integrity with Hamming distance checks, and converts, diffs, or merges sheets across mixed sequencing fleets.</p>
+              <pre class="install-cmd"><span class="prompt">$</span> pip install samplesheet-parser</pre>
+              <div class="work-tags">
+                <span class="work-tag">PyPI</span>
+                <span class="work-tag">Bioconda</span>
+                <span class="work-tag">Bioinformatics</span>
+                <span class="work-tag">Apache 2.0</span>
+                <a class="work-tag" href="https://github.com/chaitanyakasaraneni/samplesheet-parser" target="_blank" rel="noopener">GitHub ↗</a>
+                <a class="work-tag" href="https://illumina-samplesheet.readthedocs.io" target="_blank" rel="noopener">Docs ↗</a>
+                <a class="work-tag" href="https://bioconda.github.io/recipes/samplesheet-parser/README.html" target="_blank" rel="noopener">Bioconda ↗</a>
+              </div>
+            </div>
+            <div class="work-arrow" aria-hidden="true">→</div>
+          </li>
+        </ul>
+      </div>
+    </section>
+
     <!-- Writing -->
     <section>
       <div class="container">
@@ -247,65 +329,6 @@
       </div>
     </section>
 
-    <!-- Code -->
-    <section>
-      <div class="container">
-        <div class="section-head">
-          <div>
-            <p class="kicker">Code</p>
-            <h2>Open source</h2>
-          </div>
-          <a class="section-link" href="https://github.com/chaitanyakasaraneni" target="_blank" rel="noopener">GitHub →</a>
-        </div>
-
-        <ul class="work-list">
-          <li class="work-item">
-            <div class="work-year">Python</div>
-            <div>
-              <h3 class="work-title">
-                <a href="https://pypi.org/project/clinops/" target="_blank" rel="noopener">
-                  <code>clinops</code>
-                </a>
-              </h3>
-              <p class="work-desc">Clinical ML pipeline toolkit: MIMIC-IV / FHIR loaders, temporal feature windows, and patient-aware train/test splits that don't leak across cohorts. Distilled from production work in clinical and genomic data engineering.</p>
-              <pre class="install-cmd"><span class="prompt">$</span> pip install clinops</pre>
-              <div class="work-tags">
-                <span class="work-tag">PyPI</span>
-                <span class="work-tag">Healthcare</span>
-                <span class="work-tag">Apache 2.0</span>
-                <a class="work-tag" href="https://github.com/chaitanyakasaraneni/clinops" target="_blank" rel="noopener">GitHub ↗</a>
-                <a class="work-tag" href="https://clinops.readthedocs.io" target="_blank" rel="noopener">Docs ↗</a>
-              </div>
-            </div>
-            <div class="work-arrow" aria-hidden="true">→</div>
-          </li>
-
-          <li class="work-item">
-            <div class="work-year">Python</div>
-            <div>
-              <h3 class="work-title">
-                <a href="https://pypi.org/project/samplesheet-parser/" target="_blank" rel="noopener">
-                  <code>samplesheet-parser</code>
-                </a>
-              </h3>
-              <p class="work-desc">Format-agnostic parser for Illumina <code>SampleSheet.csv</code> files. Auto-detects IEM v1 vs. BCLConvert v2, validates index integrity with Hamming distance checks, and converts, diffs, or merges sheets across mixed sequencing fleets.</p>
-              <pre class="install-cmd"><span class="prompt">$</span> pip install samplesheet-parser</pre>
-              <div class="work-tags">
-                <span class="work-tag">PyPI</span>
-                <span class="work-tag">Bioconda</span>
-                <span class="work-tag">Bioinformatics</span>
-                <span class="work-tag">Apache 2.0</span>
-                <a class="work-tag" href="https://github.com/chaitanyakasaraneni/samplesheet-parser" target="_blank" rel="noopener">GitHub ↗</a>
-                <a class="work-tag" href="https://illumina-samplesheet.readthedocs.io" target="_blank" rel="noopener">Docs ↗</a>
-                <a class="work-tag" href="https://bioconda.github.io/recipes/samplesheet-parser/README.html" target="_blank" rel="noopener">Bioconda ↗</a>
-              </div>
-            </div>
-            <div class="work-arrow" aria-hidden="true">→</div>
-          </li>
-        </ul>
-      </div>
-    </section>
-
     <section>
       <div class="container">
         <div class="cta-card">
@@ -333,6 +356,6 @@
   </footer>
 
   <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
-  <script src="theme.js"></script>
+  <script src="scripts/theme.js"></script>
 </body>
 </html>
