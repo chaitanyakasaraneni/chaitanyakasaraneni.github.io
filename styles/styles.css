@@ -155,6 +155,26 @@ p { margin: 0 0 var(--space-4); color: var(--fg-muted); }
 /* =========================================================
    Article / blog post content
    ========================================================= */
+.article-hero {
+  margin: 0 auto var(--space-8);
+  max-width: var(--width-wide);
+}
+.article-hero img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border);
+}
+.article-hero figcaption {
+  margin-top: var(--space-3);
+  text-align: center;
+  font-size: var(--text-sm);
+  color: var(--fg-subtle);
+  font-family: var(--font-mono);
+  letter-spacing: 0.02em;
+}
+
 .article-content {
   max-width: var(--width-prose);
   margin: 0 auto;
@@ -210,6 +230,37 @@ p { margin: 0 0 var(--space-4); color: var(--fg-muted); }
   padding: var(--space-4) var(--space-5);
   overflow-x: auto;
   margin: 0 0 var(--space-5);
+  position: relative;
+}
+.code-copy {
+  position: absolute;
+  top: var(--space-2);
+  right: var(--space-2);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--fg-muted);
+  padding: 0.2rem 0.5rem;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+.article-content pre:hover .code-copy,
+.code-copy:focus-visible {
+  opacity: 1;
+}
+.code-copy:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+.code-copy.is-copied {
+  color: var(--accent);
+  border-color: var(--accent);
+  opacity: 1;
 }
 .article-content pre code {
   font-family: var(--font-mono);

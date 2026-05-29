@@ -12,7 +12,10 @@
   <meta property="og:title" content="Why I built cloudfit">
   <meta property="og:description" content="A cloud-agnostic machine type recommender for batch and bioinformatics workloads. Why incumbent free tooling doesn't cover the pre-launch and batch case.">
   <meta property="og:url" content="https://ckasaraneni.com/blog/why-i-built-cloudfit.html">
-  <meta property="og:image" content="https://ckasaraneni.com/img/kck-square.jpg">
+  <meta property="og:image" content="https://ckasaraneni.com/img/blog/cloudfit-launch-hero.png">
+  <meta property="og:image:width" content="1600">
+  <meta property="og:image:height" content="900">
+  <meta property="og:image:alt" content="cloudfit scoring flow: workload spec, scoring engine, ranked candidates">
   <meta property="article:published_time" content="2026-05-29">
   <meta property="article:author" content="Chaitanya Krishna Kasaraneni">
 
@@ -61,6 +64,12 @@
 
     <section>
       <div class="container">
+        <figure class="article-hero">
+          <img src="/img/blog/cloudfit-launch-hero.png"
+               alt="Diagram of cloudfit's scoring flow: a workload spec (16 vCPU, 64 GB RAM, us-central1, optimize_for cost) feeding the cloudfit scoring engine (hard floor + weighted score), producing a ranked list of GCP instances (e2-standard-16 at 0.9712, t2a-standard-16 at 0.9685, t2d-standard-16 at 0.9621).">
+          <figcaption>How cloudfit ranks cloud instances for a given workload.</figcaption>
+        </figure>
+
         <article class="article-content">
           <p>A few months back I was sitting in front of GCP Compute Engine pricing for the hundredth time, trying to pick a machine type for a Nextflow process that runs maybe four times a month. The workflow had eighteen processes. Most of them were over-provisioned by a healthy margin. A few were under-provisioned and failing intermittently, because someone (me, probably) had picked a size that was fine on a small test dataset and never revisited it.</p>
 
@@ -191,5 +200,6 @@ print(f"{best.instance.id}  ${best.instance.price_hr}/hr  score: {best.score}")
 
   <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
   <script src="/scripts/theme.js"></script>
+  <script src="/scripts/blog.js"></script>
 </body>
 </html>
