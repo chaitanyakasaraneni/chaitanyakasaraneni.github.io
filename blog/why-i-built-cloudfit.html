@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Why I built cloudfit | Chaitanya Kasaraneni</title>
+  <meta name="description" content="Why I built cloudfit: a cloud-agnostic machine type recommender for batch and bioinformatics workloads. The gap between what Compute Optimizer / Recommender / Advisor solve and what batch teams actually need.">
+  <link rel="canonical" href="https://ckasaraneni.com/blog/why-i-built-cloudfit.html">
+  <link rel="shortcut icon" href="/img/ck.png">
+
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Why I built cloudfit">
+  <meta property="og:description" content="A cloud-agnostic machine type recommender for batch and bioinformatics workloads. Why incumbent free tooling doesn't cover the pre-launch and batch case.">
+  <meta property="og:url" content="https://ckasaraneni.com/blog/why-i-built-cloudfit.html">
+  <meta property="og:image" content="https://ckasaraneni.com/img/kck-square.jpg">
+  <meta property="article:published_time" content="2026-05-29">
+  <meta property="article:author" content="Chaitanya Krishna Kasaraneni">
+
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem('theme');
+        if (t === 'light' || t === 'dark') document.documentElement.setAttribute('data-theme', t);
+      } catch (e) {}
+    })();
+  </script>
+
+  <link rel="stylesheet" href="/styles/styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="/">Chaitanya Kasaraneni<span class="dot">.</span></a>
+      <nav aria-label="Primary">
+        <ul class="nav-links">
+          <li><a href="/">Home</a></li>
+          <li><a href="/about.html">About</a></li>
+          <li><a href="/portfolio.html">Work</a></li>
+          <li><a href="/blog/" aria-current="page">Blog</a></li>
+          <li class="optional"><a href="https://chaitanya-kasaraneni.medium.com" target="_blank" rel="noopener">Writing ↗</a></li>
+          <li><a href="/contact.html">Contact</a></li>
+        </ul>
+      </nav>
+      <button class="theme-toggle" type="button" aria-label="Toggle color theme">
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="page-header">
+      <div class="container">
+        <p class="kicker">Open Source · May 29, 2026 · 5 min read</p>
+        <h1>Why I built cloudfit</h1>
+        <p>A cloud-agnostic machine type recommender for batch and bioinformatics workloads. The gap between what GCP Recommender / AWS Compute Optimizer / Azure Advisor actually solve and what batch teams need.</p>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <article class="article-content">
+          <p>A few months back I was sitting in front of GCP Compute Engine pricing for the hundredth time, trying to pick a machine type for a Nextflow process that runs maybe four times a month. The workflow had eighteen processes. Most of them were over-provisioned by a healthy margin. A few were under-provisioned and failing intermittently, because someone (me, probably) had picked a size that was fine on a small test dataset and never revisited it.</p>
+
+          <p>I wanted a tool that would just tell me: for this declared CPU and RAM, which machine type is the best fit, ranked by cost or performance or availability. Something I could drop into the pipeline DSL and stop thinking about.</p>
+
+          <p>That tool, as far as I could tell, did not exist for batch workloads.</p>
+
+          <h2>What the existing tools actually solve</h2>
+
+          <p>Every major cloud has a built-in recommender. GCP has Recommender. AWS has Compute Optimizer. Azure has Advisor. They are all genuinely good at one specific thing: looking at the last week or two of telemetry from a running VM, noticing it is using 12% of its CPU on average, and telling you to downsize.</p>
+
+          <p>For long-lived services, this is great. For batch, it is useless.</p>
+
+          <p>A Nextflow process that runs four times a month never accumulates enough CloudWatch or Cloud Monitoring data to be evaluated. Neither does a new pipeline that has not run yet. Neither does any "we are about to migrate from on-prem and need to pre-size 40 different job types" exercise. The bigger picture is that batch and forward-planning are the two largest blind spots in cloud cost optimization, and the existing free tooling does nothing for either.</p>
+
+          <p>There is paid tooling that does, sort of. Densify, Spot.io, Cast.ai, ProsperOps, and a dozen others sell sophisticated FinOps platforms. They are priced for FinOps teams at companies with eight-figure cloud bills. None of them are something you would pull into a personal pipeline or a small lab's workflow.</p>
+
+          <p>So I built cloudfit.</p>
+
+          <h2>What it actually does</h2>
+
+          <p>You give it a workload profile and a list of candidate machine types. It scores each candidate against the profile and returns them ranked.</p>
+
+<pre><code>from cloudfit import WorkloadProfile, MachineType, rank
+
+profile = WorkloadProfile(
+    vcpu=60,
+    ram_gb=224,
+    archetype="io",            # io | cpu | mem | gpu | burst
+    optimize_for="balanced",   # cost | performance | availability | balanced
+)
+
+candidates = [...]  # from cloudfit-provider-gcp, or your own list
+
+ranked = rank(profile, candidates)
+best = ranked[0]
+print(f"{best.instance.id}  ${best.instance.price_hr}/hr  score: {best.score}")
+</code></pre>
+
+          <p>That is the entire surface area of the library. The complexity sits in two places:</p>
+
+          <ol>
+            <li><strong>Hard floor filters.</strong> A candidate that does not meet the declared CPU or RAM is disqualified, not just scored low. Same for region constraints. Same for status (deprecated instances do not show up in results). I wanted the failure mode to be "no result" rather than "a result that silently underdelivers."</li>
+            <li><strong>Weighted scoring across cost, performance, and availability.</strong> You pick what you optimize for. The score is reproducible and you get a per-factor breakdown so you can see why the top pick is the top pick. No black box.</li>
+          </ol>
+
+          <p>There is a separate provider package, <code>cloudfit-provider-gcp</code>, that fetches the live GCP catalog (machine types plus pricing from the Cloud Billing API), normalizes it into the scoring schema, and exits. That keeps the scoring engine cloud-agnostic and the cloud-specific work isolated.</p>
+
+          <p>There is also a FastAPI service, <code>cloudfit-api</code>, that wraps both as an HTTP API with a bundled snapshot of 875 GCP machine types across 5 regions (us-central1, us-east1, us-west1, europe-west4, asia-southeast1) with realistic asymmetric availability. It runs out of the box, no credentials needed. There is a live demo at <a href="https://chaitanyakasaraneni-cloudfit-api.hf.space/docs" target="_blank" rel="noopener">chaitanyakasaraneni-cloudfit-api.hf.space/docs</a> that you can poke at right now. Hit <code>/recommend</code> with a workload profile and you get back a ranked list with per-factor scores in milliseconds.</p>
+
+          <p>If you pass <code>region</code> in the request, cloudfit hard-floors anything not actually available there. So a pipeline that runs in asia-southeast1 will not get a <code>c4</code> recommendation if <code>c4</code> has not rolled out to that region yet, even if it would otherwise be the best match.</p>
+
+          <p>There is also a <code>/diff</code> endpoint that compares the top pick for two workloads and returns the cost and spec deltas, which is the conversation you have when scaling a pipeline up or down.</p>
+
+          <p>For a visual overview with copy-paste curl examples for all four endpoints, the project landing page is at <a href="https://cloudfit-io.github.io" target="_blank" rel="noopener">cloudfit-io.github.io</a>.</p>
+
+          <p>All three packages are on PyPI under Apache 2.0.</p>
+
+          <h2>Why Nextflow first</h2>
+
+          <p>The reason workflow engines keep coming up is that they already speak this language. Every Nextflow process declares its CPU and memory in the DSL. Cromwell does the same. Snakemake does. Argo does. That declaration is exactly the shape cloudfit takes as input.</p>
+
+          <p>So the natural next step is a Nextflow plugin. Something that lets you write:</p>
+
+<pre><code>process align {
+    machineType cloudfit.recommend(cpu: 16, memory: 64.GB, optimize: 'cost')
+    ...
+}
+</code></pre>
+
+          <p>instead of hardcoding <code>n2-standard-16</code> and finding out three months later that <code>t2d-standard-16</code> would have cost you 30% less, or that <code>c3-standard-22</code> would have finished 40% faster. That plugin is the next thing I want to build, and it is the reason I am writing this post.</p>
+
+          <h2>What I am not solving yet</h2>
+
+          <p>Some things cloudfit does not do today, in the interest of full transparency:</p>
+
+          <ul>
+            <li>The performance scorer rewards headroom up to 2x the requested vCPU and RAM, then saturates. So <code>optimize_for: performance</code> clusters at 2x your declared spec even when the workload would fit at 1x. Switch to <code>optimize_for: cost</code> if you want exact-fit sizing. A smoother curve that factors in CPU generation, clock speed, and memory bandwidth is in the v0.2 plan.</li>
+            <li>It does not understand reservations, committed use discounts, or savings plans. If you have CUDs, your effective price is different from the on-demand price the recommender currently sees.</li>
+            <li>It does not check live regional quota. If you are at your c4 vCPU limit in us-central1, cloudfit will still recommend a c4 and your job will sit in the queue.</li>
+            <li>AWS and Azure providers are not built yet. GCP is the only live provider. AWS is the next planned milestone, with a public tracker at <a href="https://github.com/cloudfit-io/cloudfit-provider-aws" target="_blank" rel="noopener">github.com/cloudfit-io/cloudfit-provider-aws</a>.</li>
+            <li>The bundled API snapshot is a representative sample across 5 regions, not exhaustive. To run against the full live catalog you would refresh the snapshot yourself with cloudfit-provider-gcp pointed at your project.</li>
+          </ul>
+
+          <p>All five of these are on the roadmap, with the full Known Limitations table (including scoring methodology, GPU type discrimination, empirical validation, and more) in the cloudfit-core README. The order I tackle them depends on what people actually need first, which is part of why I am posting this.</p>
+
+          <h2>What I want to know</h2>
+
+          <p>Before I write the Nextflow plugin, I want to know if anyone wants it. Specifically:</p>
+
+          <ol>
+            <li>If your team runs Nextflow, Cromwell, Snakemake, or Argo pipelines on GCP or AWS, do you currently have a way to pick machine types other than guessing once and tuning later?</li>
+            <li>If cloudfit existed as a plugin in your pipeline DSL, would you use it? Where would you point it first?</li>
+            <li>What would a credible recommendation actually need to factor in before you trusted it (commitments, reservations, quota, regional availability, GPU-specific constraints, something else)?</li>
+          </ol>
+
+          <p>If any of these resonate, please reach out. Email is on <a href="/contact.html">my contact page</a>. The repos live at <a href="https://github.com/cloudfit-io" target="_blank" rel="noopener">github.com/cloudfit-io</a>, the landing page is at <a href="https://cloudfit-io.github.io" target="_blank" rel="noopener">cloudfit-io.github.io</a>, and the live demo API is linked above.</p>
+
+          <p>If it does not resonate, that is also useful. "We already do this with X" or "we do not care because Y" is exactly the signal I am looking for at this stage. I would rather know now than spend two months on a plugin nobody asked for.</p>
+
+          <div class="article-meta">
+            <span>Published May 29, 2026</span>
+            <span>Tagged: open source, cloud, bioinformatics, Nextflow</span>
+            <span><a href="/blog/">← Back to blog</a></span>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-row">
+      <span>&copy; <span id="year"></span> Chaitanya Kasaraneni</span>
+      <ul class="social-links">
+        <li><a href="https://github.com/chaitanyakasaraneni" target="_blank" rel="noopener">GitHub</a></li>
+        <li><a href="https://www.linkedin.com/in/chaitanyakasaraneni/" target="_blank" rel="noopener">LinkedIn</a></li>
+        <li><a href="https://chaitanya-kasaraneni.medium.com" target="_blank" rel="noopener">Medium</a></li>
+        <li><a href="https://scholar.google.com/citations?user=Y2S8D2UAAAAJ&hl=en" target="_blank" rel="noopener">Scholar</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+  <script src="/styles/theme.js"></script>
+</body>
+</html>
