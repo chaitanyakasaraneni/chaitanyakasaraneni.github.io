@@ -120,6 +120,8 @@ print(f"{best.instance.id}  ${best.instance.price_hr}/hr  score: {best.score}")
 
           <p>There is also a FastAPI service, <code>cloudfit-api</code>, that wraps both as an HTTP API with a bundled snapshot of 875 GCP machine types across 5 regions (us-central1, us-east1, us-west1, europe-west4, asia-southeast1) with realistic asymmetric availability. It runs out of the box, no credentials needed. There is a live demo at <a href="https://chaitanyakasaraneni-cloudfit-api.hf.space/docs" target="_blank" rel="noopener">chaitanyakasaraneni-cloudfit-api.hf.space/docs</a> that you can poke at right now. Hit <code>/recommend</code> with a workload profile and you get back a ranked list with per-factor scores in milliseconds.</p>
 
+          <p>If you would rather not write JSON, there is a one-click UI at <a href="https://chaitanyakasaraneni-cloudfit-ui.hf.space" target="_blank" rel="noopener">chaitanyakasaraneni-cloudfit-ui.hf.space</a>. Same scoring engine, same snapshot, just a form on the left and a ranked table on the right. Five example workloads (BWA-MEM2, Cell Ranger, AlphaFold, Nextflow burst, Spark ETL) are one click away.</p>
+
           <p>If you pass <code>region</code> in the request, cloudfit hard-floors anything not actually available there. So a pipeline that runs in asia-southeast1 will not get a <code>c4</code> recommendation if <code>c4</code> has not rolled out to that region yet, even if it would otherwise be the best match.</p>
 
           <p>There is also a <code>/diff</code> endpoint that compares the top pick for two workloads and returns the cost and spec deltas, which is the conversation you have when scaling a pipeline up or down.</p>
