@@ -589,7 +589,7 @@ a.work-tag:hover {
   color: var(--accent);
 }
 
-/* Primary action tag (live demo, docs, etc) — filled accent for visibility */
+/* Primary action tag (live demo, docs, etc): filled accent for visibility */
 a.work-tag.work-tag-cta {
   background: var(--accent);
   border-color: var(--accent);
