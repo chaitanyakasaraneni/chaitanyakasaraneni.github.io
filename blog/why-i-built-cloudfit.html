@@ -149,7 +149,7 @@ print(f"{best.instance.id}  ${best.instance.price_hr}/hr  score: {best.score}")
           <p>Some things cloudfit does not do today, in the interest of full transparency:</p>
 
           <ul>
-            <li>The performance scorer rewards headroom up to 2x the requested vCPU and RAM, then saturates. So <code>optimize_for: performance</code> clusters at 2x your declared spec even when the workload would fit at 1x. Switch to <code>optimize_for: cost</code> if you want exact-fit sizing. A smoother curve that factors in CPU generation, clock speed, and memory bandwidth is in the v0.2 plan.</li>
+            <li>The performance scorer does not yet factor in CPU generation, clock speed, memory bandwidth, or network interconnect. A first-gen c2 and a current-gen c4 with the same vCPU count score identically on perf today. (cloudfit-core v0.3 already fixed the prior "rewards 2x headroom" behavior — fit-based scoring is now the default, peaking at exact match through 1.5x.)</li>
             <li>It does not understand reservations, committed use discounts, or savings plans. If you have CUDs, your effective price is different from the on-demand price the recommender currently sees.</li>
             <li>It does not check live regional quota. If you are at your c4 vCPU limit in us-central1, cloudfit will still recommend a c4 and your job will sit in the queue.</li>
             <li>AWS and Azure providers are not built yet. GCP is the only live provider. AWS is the next planned milestone, with a public tracker at <a href="https://github.com/cloudfit-io/cloudfit-provider-aws" target="_blank" rel="noopener">github.com/cloudfit-io/cloudfit-provider-aws</a>.</li>
