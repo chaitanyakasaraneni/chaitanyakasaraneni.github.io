@@ -13,8 +13,8 @@
   <meta property="og:description" content="A cloud-agnostic machine type recommender for batch and bioinformatics workloads. Why incumbent free tooling doesn't cover the pre-launch and batch case.">
   <meta property="og:url" content="https://ckasaraneni.com/blog/why-i-built-cloudfit.html">
   <meta property="og:image" content="https://ckasaraneni.com/img/blog/cloudfit-launch-hero.png">
-  <meta property="og:image:width" content="1600">
-  <meta property="og:image:height" content="900">
+  <meta property="og:image:width" content="3360">
+  <meta property="og:image:height" content="1960">
   <meta property="og:image:alt" content="cloudfit scoring flow: workload spec, scoring engine, ranked candidates">
   <meta property="article:published_time" content="2026-05-29">
   <meta property="article:author" content="Chaitanya Krishna Kasaraneni">
@@ -66,7 +66,7 @@
       <div class="container">
         <figure class="article-hero">
           <img src="/img/blog/cloudfit-launch-hero.png"
-               alt="Diagram of cloudfit's scoring flow: a workload spec (16 vCPU, 64 GB RAM, us-central1, optimize_for cost) feeding the cloudfit scoring engine (hard floor + weighted score), producing a ranked list of GCP instances (e2-standard-16 at 0.9712, t2a-standard-16 at 0.9685, t2d-standard-16 at 0.9621).">
+               alt="Diagram of cloudfit's scoring flow: a workload spec (60 vCPU, 224 GB RAM, optimize_for balanced) feeding the cloudfit scoring engine (hard floor + weighted score), producing a ranked list of GCP instances (t2d-standard-60 at 1.00, c2-standard-60 at 0.75, c3d-standard-60-lssd at 0.67).">
           <figcaption>How cloudfit ranks cloud instances for a given workload.</figcaption>
         </figure>
 
