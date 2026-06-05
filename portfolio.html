@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Work | Chaitanya Kasaraneni</title>
-  <meta name="description" content="Publications, technical writing, and open-source projects by Chaitanya Kasaraneni, covering data engineering, machine learning, GNNs, and medical AI.">
+  <meta name="description" content="Publications, conference talks, technical writing, and open-source projects by Chaitanya Kasaraneni. Clinical AI, graph neural networks, data engineering, and bioinformatics. IEEE ICHI 2026 presenter.">
   <link rel="canonical" href="https://ckasaraneni.com/portfolio.html">
   <link rel="shortcut icon" href="img/ck.png">
 
@@ -52,13 +52,13 @@
     <section class="page-header">
       <div class="container">
         <p class="kicker">Work</p>
-        <h1>Publications, writing, and code.</h1>
-        <p>A running list of what I've published, written, and shipped: research papers, book chapters, technical tutorials, and open-source packages.</p>
+        <h1>Publications, talks, writing, and code.</h1>
+        <p>A running list of what I've published, presented, written, and shipped: research papers, conference talks, book chapters, technical tutorials, and open-source packages.</p>
       </div>
     </section>
 
     <!-- Publications -->
-    <section>
+    <section class="reveal">
       <div class="container">
         <div class="section-head">
           <div>
@@ -69,6 +69,24 @@
         </div>
 
         <ul class="work-list">
+          <li class="work-item">
+            <div class="work-year">2026</div>
+            <div>
+              <h3 class="work-title">
+                AI-Driven Early-Warning System to Predict Multi-Organ Deterioration in Critical Care Patients
+              </h3>
+              <p class="work-desc">Temporal deep learning with cross-organ attention to detect ICU deterioration a median of <strong>6.2 hours</strong> before conventional clinical detection, across five organ systems. Presented at IEEE ICHI 2026, Session 16. Co-authored with Sarmista Thalapaneni; session chaired by Dr. Chen-Ren Shu, PhD, FACMI, FAMIA.</p>
+              <div class="work-tags">
+                <span class="work-tag">IEEE ICHI 2026</span>
+                <span class="work-tag">Clinical AI</span>
+                <span class="work-tag">ICU</span>
+                <span class="work-tag">Temporal Deep Learning</span>
+                <span class="work-tag">IEEE Xplore forthcoming</span>
+              </div>
+            </div>
+            <div class="work-arrow" aria-hidden="true"></div>
+          </li>
+
           <li class="work-item">
             <div class="work-year">2025</div>
             <div>
@@ -180,8 +198,39 @@
       </div>
     </section>
 
+    <!-- Talks -->
+    <section class="reveal">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <p class="kicker">Talks</p>
+            <h2>Conference presentations</h2>
+          </div>
+        </div>
+
+        <ul class="work-list">
+          <li class="work-item">
+            <div class="work-year">2026</div>
+            <div>
+              <h3 class="work-title">
+                AI-Driven Early-Warning System to Predict Multi-Organ Deterioration in Critical Care Patients
+              </h3>
+              <p class="work-desc">Session 16, IEEE International Conference on Healthcare Informatics (ICHI 2026). Temporal deep learning with cross-organ attention to predict ICU deterioration a median of <strong>6.2 hours</strong> before conventional clinical detection, across five organ systems. Alongside researchers working on Parkinson's severity classification, autism phenotyping, stroke prediction, and patient care trajectory modeling. Paper forthcoming on IEEE Xplore.</p>
+              <div class="work-tags">
+                <span class="work-tag">IEEE ICHI 2026</span>
+                <span class="work-tag">Session 16</span>
+                <span class="work-tag">Clinical AI</span>
+                <span class="work-tag">ICU</span>
+              </div>
+            </div>
+            <div class="work-arrow" aria-hidden="true"></div>
+          </li>
+        </ul>
+      </div>
+    </section>
+
     <!-- Code -->
-    <section>
+    <section class="reveal">
       <div class="container">
         <div class="section-head">
           <div>
@@ -264,7 +313,7 @@
     </section>
 
     <!-- Writing -->
-    <section>
+    <section class="reveal">
       <div class="container">
         <div class="section-head">
           <div>
@@ -357,13 +406,13 @@
       </div>
     </section>
 
-    <section>
+    <section class="reveal">
       <div class="container">
         <div class="cta-card">
-          <h2>Want to chat about data or research?</h2>
-          <p>Always happy to swap notes on data systems, ML in production, or open-source projects, and to hear feedback on my writing or research.</p>
+          <h2>Interested in collaborating or having me speak?</h2>
+          <p>Open to research collaboration, conference speaking invitations, and conversations about data engineering, clinical AI, and open-source tooling.</p>
           <div class="btn-row">
-            <a class="btn btn-primary" href="/contact.html">Say hello</a>
+            <a class="btn btn-primary" href="/contact.html">Get in touch</a>
             <a class="btn btn-secondary" href="/about.html">More about me</a>
           </div>
         </div>
@@ -385,6 +434,7 @@
 
   <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
   <script src="scripts/theme.js"></script>
+  <script src="scripts/animations.js" defer></script>
   <script data-goatcounter="https://ckasaraneni.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </body>
 </html>
